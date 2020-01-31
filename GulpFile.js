@@ -1,33 +1,39 @@
-// Initialize modules
-const { src, dest, watch, series, parallel } = require('gulp')
-/* const autoprefixer = require('autoprefixer')
+const { watch, src, dest, parallel, series } = require('gulp')
+
 const postcss = require('gulp-postcss')
-const cssnano = require('cssnano')
-const concat = require('gulp-concat') */
+const cssImport = require('postcss-import')
+const cssVars = require('postcss-simple-vars')
+const nested = require('postcss-nested')
 
-// File path variable
-const files = {
-    scssPath: 'app/scss/**/*.scss',
-    jsPath: 'app/js/**/*.js'
+const browserSync = require('browser-sync').create()
+
+function watchTask() {
+    browserSync.init({
+        server: {
+            baseDir: "app"
+        }
+    })
+    watch(['app/assets/styles/**/*.css'], series(styles, cssInject))
 }
 
-// Sass task
-function scssTask() {
-    const plugins = [autoprefixer, cssnano, concat]
-    return src(files.scssPath)
+function styles() {
+    const plugins = [cssImport, cssVars, nested]
+    return src('app/assets/styles/styles.css')
     .pipe(postcss(plugins))
-    .pipe(dest('dist'))
+    .on('error', function(err) {
+        console.log(err.toString())
+        this.emit('end')
+    })
+    .pipe(dest('app/temp/styles'))
 }
 
-// JS task
-
-// Cachebusting task
-function chache() {
-    return src(['index.html'])
-    .pipe(replace(/cb=\d+/g, 'cb=' + Math.random()*4))
-    .pipe(dest('.'))
+function cssInject() {
+    return src('app/temp/styles/styles.css')
+    .pipe(browserSync.stream())
 }
 
-// Watch task
-
-// Default task
+exports.default = series(
+    styles,
+    cssInject,
+    parallel(watchTask)
+)

@@ -11,7 +11,7 @@
 <body>
   <header>
     <img src="assets/images/icons/clear-view-escapes.svg">
-    <a class="btn" href="#">Get in Touch</a>
+        <a class="btn" href="#">Get in Touch</a>
     <nav>
       <ul>
         <li><a href="#our-beginning">Beginning</a></li>
@@ -22,16 +22,19 @@
   </header>
 
   <div class="large-hero">
-    <!-- <img src="assets/images/hero--large.jpg"> -->
     <picture>
-      <source media="(min-width: 640px)" srcset="assets/images/hero--small.jpg">
-      <img src="assets/images/hero--smaller.jpg" alt="Coastal viewon ocean and mountains">
+      <source media="(min-width: 1380px)" srcset="assets/images/hero--large.jpg 1920w, assets/images/hero--large-hi-dpi.jpg 3840w" alt="Coastal view of oceans and mountains">
+      <source media="(min-width: 990px)" srcset="assets/images/hero--medium.jpg 1380w, assets/images/hero--medium-hi-dpi.jpg 2760w" alt="Coastal view of oceans and mountains">
+      <source media="(min-width: 640px)" srcset="assets/images/hero--small.jpg 990w, assets/images/hero--small-hi-dpi.jpg 1980w" alt="Coastal view of oceans and mountains">
+      <img srcset="assets/images/hero--smaller.jpg 640w, assets/images/hero--smaller-hi-dpi.jpg 1280w" alt="Coastal view of oceans and mountains">
     </picture>
     <div class="large-hero__text-content">
-      <h1 class="large-hero__title">Your clarity.</h1 las>
-      <h2 class="large-hero__subtitle">One trip away.</h2 class>
-      <p class="large-hero__description">We create soul restoring journeys that inspire you to be you.</p class="large-hero__description">
-      <p><a class="btn btn--orange btn--large" href="#">Get Started Toda</a></p>
+      <div class="wrapper">
+        <h1 class="large-hero__title">Your clarity.</h1 las>
+        <h2 class="large-hero__subtitle">One trip away.</h2 class>
+        <p class="large-hero__description">We create soul restoring journeys that inspire you to be you.</p class="large-hero__description">
+        <p><a class="btn btn--orange btn--large" href="#">Get Started Today</a></p>
+      </div>
     </div>
   </div>
 

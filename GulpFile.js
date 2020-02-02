@@ -1,5 +1,6 @@
 const { watch, src, dest, parallel, series } = require('gulp')
 
+const mixins = require('postcss-mixins')
 const postcss = require('gulp-postcss')
 const cssImport = require('postcss-import')
 const cssVars = require('postcss-simple-vars')
@@ -13,11 +14,22 @@ function watchTask() {
             baseDir: "app"
         }
     })
-    watch(['app/assets/styles/**/*.css'], series(styles, cssInject))
+    watch(['app/assets/styles/**/*.css', 'app/index.html'], series(styles, reload))
 }
 
+function reload(done) {
+    browserSync.reload()
+    done()
+}
+
+// function watchHtml() {
+//     watch(['app/index.html'], function() {
+
+//     })
+// }
+
 function styles() {
-    const plugins = [cssImport, cssVars, nested]
+    const plugins = [cssImport, mixins, nested, cssVars]
     return src('app/assets/styles/styles.css')
     .pipe(postcss(plugins))
     .on('error', function(err) {

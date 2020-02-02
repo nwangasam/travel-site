@@ -9,8 +9,20 @@
         background: $mainBlue;
     }
 
+    &--no-b-padding-until-medium {
+        padding-bottom: 0;
+
+        @mixin atMedium {
+            padding-bottom: 4.5rem;
+        }
+    }
+
     &--testimonials {
-        background: url('/app/assets/images/testimonials-bg.jpg') top center no-repeat;
-        background-size: cover;
+        background-color: #e0e6ef;
+
+        @mixin atMedium {
+            background-image: url('../../assets/images/testimonials-bg.jpg');
+            background-size: cover;
+        }
     }
 }

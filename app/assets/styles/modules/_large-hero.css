@@ -19,7 +19,7 @@
         font-weight: 300;
         color: $mainBlue;
         font-size: 2.4rem;
-        // margin: 0;
+        margin: 0;
 
         @mixin atSmall {
             font-size: 4.38rem;
@@ -30,7 +30,7 @@
         font-weight: 300;
         color: $mainBlue;
         font-size: 1.5rem;
-        // margin: 0;
+        margin: 0;
 
         @mixin atSmall {
             font-size: 2.9rem

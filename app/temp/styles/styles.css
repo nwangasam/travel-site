@@ -349,8 +349,6 @@ template {
 }
 
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
@@ -459,7 +457,7 @@ a {
 .wrapper {
     padding-left: 18px;
     padding-right: 18px;
-    max-width: 1236px;
+    max-width: 1144px;
     margin-left: auto;
     margin-right: auto;
     overflow: hidden;
@@ -559,10 +557,6 @@ a {
         display: table;
     }
 
-.row__b-margin-until-medium {
-        margin-bottom: 1rem;
-    }
-
 @media(min-width: 800px) {
 
         .row__b-margin-until-medium {
@@ -578,7 +572,11 @@ a {
                 width: 37%;
             }
 
-    
+        .row__medium-6 {
+            float: left;
+            width: 50%;
+        }
+
         .row__medium-8 {
             width: 66.66%;
             float: left;
@@ -592,13 +590,60 @@ a {
         margin-right: -65px;
     }
 
+.row--gutters-large {
+        margin-right: -100px;
+    }
+
+.row--gutters-large > div {
+        padding-right: 100px;
+    }
+
 .row--gutters > div {
         padding-right: 65px;
     }
 
+.row__b-margin-until-medium {
+        margin-bottom: 1rem;
+    }
+
+.section-title {
+    color: white;
+    font-size: 2.55rem;
+    font-weight: 300;
+    text-align: center;
+}
+
+@media (min-width: 530px) {
+
+.section-title {
+        font-size: 3.75rem
+}
+    }
+
+.section-title strong {
+        font-weight: 500;
+    }
+
+.section-title__icon {
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: .6rem;
+    }
+
+@media (min-width: 530px) {
+
+.section-title__icon {
+            margin-right: .5rem;
+            margin-left: 0;
+            margin-bottom: 0;
+            display: inline-block
+    }
+    }
+
 .generic-content-container p {
         line-height: 1.65;
-        margin: 1.8rem 0;
+        margin: 0 0 1.8rem 0;
     }
 
 @media (min-width: 530px) {
@@ -610,4 +655,53 @@ a {
 
 .generic-content-container p a {
         font-weight: 700; /*bold*/
+    }
+
+.feature-item {
+    color: #fff;
+    position: relative;
+    padding-bottom: 2.5rem;
+}
+
+@media (min-width: 530px) {
+
+.feature-item {
+        padding-left: 94px
+}
+    }
+
+.feature-item__icon {
+        display: block;
+        margin: 0 auto;
+    }
+
+@media (min-width: 530px) {
+
+.feature-item__icon {
+            position: absolute;
+            left: 0
+    }
+    }
+
+.feature-item__title {
+        font-size: 1.6rem;
+        font-weight: 300;
+        margin-bottom: .8rem;
+        margin-top: .7em;
+        text-align: center;
+    }
+
+@media (min-width: 530px) {
+
+.feature-item__title {
+            font-size: 1.875rem;
+            margin-top: 1em;
+            text-align: left
+    }
+    }
+
+.feature-item p {
+        color: #ffffffc5;
+        font-weight: 100;
+        letter-spacing: 0.02em;
     }

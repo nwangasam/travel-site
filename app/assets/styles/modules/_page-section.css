@@ -23,6 +23,7 @@
         @mixin atMedium {
             background-image: url('../../assets/images/testimonials-bg.jpg');
             background-size: cover;
+            
         }
     }
 }

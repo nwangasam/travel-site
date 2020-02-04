@@ -7,6 +7,8 @@ const cssVars = require('postcss-simple-vars')
 const nested = require('postcss-nested')
 
 const browserSync = require('browser-sync').create()
+const svgSprite = require('gulp-svg-sprite')
+const rename = require('gulp-rename')
 
 function watchTask() {
     browserSync.init({
@@ -22,11 +24,6 @@ function reload(done) {
     done()
 }
 
-// function watchHtml() {
-//     watch(['app/index.html'], function() {
-
-//     })
-// }
 
 function styles() {
     const plugins = [cssImport, mixins, nested, cssVars]
@@ -44,6 +41,33 @@ function cssInject() {
     .pipe(browserSync.stream())
 }
 
+
+function createSprite() {
+    const config = {
+        mode: {
+            css: {
+                sprite: 'svg/sprite.svg',
+                render: {
+                    css: {
+                        template: './app/templates/sprite.css'
+                    }
+                }
+            }
+        }
+    }
+    return src('./app/assets/images/icons/**/*.svg')
+    .pipe(svgSprite(config))
+    .pipe(dest('./app/temp/sprite/'))
+}
+
+function copySprite() { 
+    return src('./app/temp/sprite/css/**/*.css')
+    .pipe(rename('_sprite.css'))
+    .pipe(dest('./app/assets/styles/modules'))
+}
+
+exports.icons = series(createSprite, copySprite)
+exports.createSprite = createSprite;
 exports.default = series(
     styles,
     cssInject,

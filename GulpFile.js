@@ -9,6 +9,7 @@ const nested = require('postcss-nested')
 const browserSync = require('browser-sync').create()
 const svgSprite = require('gulp-svg-sprite')
 const rename = require('gulp-rename')
+const del = require('del')
 
 function watchTask() {
     browserSync.init({
@@ -41,12 +42,19 @@ function cssInject() {
     .pipe(browserSync.stream())
 }
 
+function beginClean() {
+    return del(['./app/temp/sprite', './app/assets/images/sprites'])
+}
+
+function endClean() {
+    return del(['./app/temp/sprite'])
+}
 
 function createSprite() {
     const config = {
         mode: {
             css: {
-                sprite: 'svg/sprite.svg',
+                sprite: ' sprite.svg',
                 render: {
                     css: {
                         template: './app/templates/sprite.css'
@@ -60,13 +68,18 @@ function createSprite() {
     .pipe(dest('./app/temp/sprite/'))
 }
 
-function copySprite() { 
+function copySpriteCSS() { 
     return src('./app/temp/sprite/css/**/*.css')
     .pipe(rename('_sprite.css'))
     .pipe(dest('./app/assets/styles/modules'))
 }
 
-exports.icons = series(createSprite, copySprite)
+function copySpriteGraphic() {
+    return src('./app/temp/sprite/css/**/*.svg')
+    .pipe(dest('./app/assets/images/sprites'))
+}
+
+exports.icons = series(beginClean, createSprite, parallel(copySpriteCSS, copySpriteGraphic), endClean)
 exports.createSprite = createSprite;
 exports.default = series(
     styles,

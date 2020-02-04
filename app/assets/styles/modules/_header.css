@@ -2,7 +2,10 @@
     padding: 10px;
     position: absolute;
     z-index: 2;
-    background: rgba($mainBlue, .3);
+
+    @mixin atMedium {
+        background: rgba($mainBlue, .3);
+    }
 
     width: 100%;
 
@@ -10,10 +13,43 @@
         float: right;
     }
 
+    &__menu-icon {
+        height: 20px;
+        width: 20px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: #fff;
+
+        @mixin atMedium {
+            display: none;
+        }
+    }
+    
     &__logo {
         top: 0;
+        left: 50%;
+        transform: translateX(-50%) scale(.8);
         position: absolute;
         background-color: $mainBlue;
-        padding: 25px 35px;
+        padding: 25px 36px;
+        transform-origin: 50% 0%;
+
+        @mixin atMedium {
+            left: auto;
+            transform: translateX(0) scale(1);
+        }
+    }
+
+    &__logo__graphics {
+        text-indent: -99999px;
+    }
+
+    &__menu-content {
+        display: none;
+
+        @mixin atMedium {
+            display: block;
+        }
     }
 }

@@ -908,3 +908,53 @@ a {
             display: inline;
             margin-right: 1.4rem;
         }}
+
+.site-header {
+    padding: 10px;
+    position: absolute;
+    z-index: 2;
+    background: rgba(47,85,114, .3);
+
+    width: 100%;
+}
+
+.site-header__btn-container {
+        float: right;
+    }
+
+.site-header__logo {
+        top: 0;
+        position: absolute;
+        background-color: #2f5572;
+        padding: 25px 35px;
+    }
+
+.primary-nav--pull-right {
+        float: right;
+    }
+
+.primary-nav ul {
+        margin: 0;
+        padding: 0;
+    }
+
+.primary-nav ul::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+.primary-nav li {
+        list-style: none;
+        float: right;
+        padding-right: 20px;
+        /* line-height: 70px; */
+    }
+
+.primary-nav a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 300;
+        display: inline-block;
+        padding-top: 11px;
+    }

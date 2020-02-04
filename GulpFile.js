@@ -5,6 +5,7 @@ const postcss = require('gulp-postcss')
 const cssImport = require('postcss-import')
 const cssVars = require('postcss-simple-vars')
 const nested = require('postcss-nested')
+const hexrgba = require('postcss-hexrgba')
 
 const browserSync = require('browser-sync').create()
 const svgSprite = require('gulp-svg-sprite')
@@ -27,7 +28,7 @@ function reload(done) {
 
 
 function styles() {
-    const plugins = [cssImport, mixins, nested, cssVars]
+    const plugins = [cssImport, mixins, nested, cssVars, hexrgba]
     return src('app/assets/styles/styles.css')
     .pipe(postcss(plugins))
     .on('error', function(err) {

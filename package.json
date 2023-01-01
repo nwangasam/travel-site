@@ -19,7 +19,7 @@
   "devDependencies": {
     "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
-    "babel-loader": "^8.0.6",
+    "babel-loader": "^8.3.0",
     "browser-sync": "^2.26.7",
     "del": "^5.1.0",
     "gulp": "^4.0.2",
@@ -32,7 +32,7 @@
     "postcss-mixins": "^6.2.3",
     "postcss-nested": "^4.2.1",
     "postcss-simple-vars": "^5.0.2",
-    "webpack": "^4.41.5"
+    "webpack": "^5.75.0"
   },
   "dependencies": {
     "jquery": "^3.4.1",
